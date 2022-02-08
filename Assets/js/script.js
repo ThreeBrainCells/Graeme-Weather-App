@@ -60,7 +60,6 @@ var getWeatherData = function (latitude, longitude){
     var weatherUrl=`https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&units=imperial&appid=${APIKEY}`
     fetch (weatherUrl).then(function(response){
          if(response.ok){
-             console.log(response)
              response.json().then(function(data){
                  console.log(data)
                   displayWeatherData(data)
@@ -73,12 +72,25 @@ var getWeatherData = function (latitude, longitude){
 //an icon representation of weather conditions, the temperature, the humidity, the wind speed, and the UV index
 
 function displayWeatherData(data){
-  var date = moment().format('M/DD/YYYY')
-  $('#current-day').children('.card-header').html(`${cityName}(${date})${data.current.weather[0].icon}`)
-  $('#current-day').children('.temp').html(`Temp:${data.current.temp}`)
-  $('#current-day').children('.wind').html(`Wind:${data.current.wind_speed}`)
-  $('#current-day').children('.humid').html(`Humidity:${data.current.humidity}`)
-  $('#current-day').children('.uv-index').html(`UV Index: ${data.current.uvi}`)
+  var date = 
+  $('#current-day').children('.card-header').html(`${cityName}(${date})`)
+  $('#current-day').children('.icon').attr("src",`http://openweathermap.org/img/wn/${data.current.weather[0].icon}@2x.png`)
+  $('#current-day').children('ul').children('.temp').html(`Temp: ${data.current.temp}`)
+  $('#current-day').children('ul').children('.wind').html(`Wind: ${data.current.wind_speed}`)
+  $('#current-day').children('ul').children('.humid').html(`Humidity: ${data.current.humidity}`)
+  $('#current-day').children('ul').children('.uv-index').html(`UV Index: ${data.current.uvi}`)
+
+  //Now to do the same for the forecast cards
+  $('.forecast-card').children().each( (i, element)=>{
+    $(element).hasClass('.card-header').html('kookoo');
+    // console.log(data.daily[i])
+    // var forecastDay = moment(data.daily[i].dt).format('dddd');
+    // $('.forecast-card').children('.card-header').html(`${forecastDay}`)
+    // $('.forecast-card').children('ul').children('.icon').attr("src",`http://openweathermap.org/img/wn/${data.daily[i].weather[0].icon}@2x.png`)
+    // $('.forecast-card').children('ul').children('.temp').html(`Temp: ${data.daily[i].temp}`)
+    // $('.forecast-card').children('ul').children('.wind').html(`Wind: ${data.daily[i].wind_speed}`)
+    // $('.forecast-card').children('ul').children('.humid').html(`Humidity: ${data.daily[i].humidity}`)
+  })
 }
 
 // $('#searchBtn').on('click', getCityName());
