@@ -9,6 +9,92 @@
   </head>
 <body>
 
-    <script src="./Assets/js/script.js"></script>
+<input type="text" id="city-name" placeholder="Enter city name here">
+<button id="searchBtn">Search</button>
+<div id="data-test"></div>
+<div id="city-buttons">
+  <button type="button" id="Denver"class="cityBtn btn btn-secondary btn-lg btn-block">Denver</button>
+</div>
+<!-- banner
+search bar
+search button
+space for generated cities(and local storage)
+current weather display
+5x forecast days -->
+<div id="current-weather">
+  <div class="card big-card" id="current-day" style="width: 18rem;">
+    <div class="card-header"></div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item temp">An item</li>
+      <li class="list-group-item wind">A second item</li>
+      <li class="list-group-item humid">A third item</li>
+      <li class="list-group-item uv-index">A fourth item</li>
+    </ul>
+  </div>
+</div>
+
+<div id="5-day-forecast">
+  <h1>5-day-forecast:</h1>
+  <div id="forecast-1" class="forecast-card card" style="width: 18rem;">
+    <div class="card-header">
+      Featured
+    </div>
+    <ul class="list-group list-group-flush">      
+      <li class="list-group-item icon">A fourth item</li>
+      <li class="list-group-item temp">An item</li>
+      <li class="list-group-item wind">A second item</li>
+      <li class="list-group-item humid">A third item</li>
+     </ul>
+  </div>
+  <div id="forecast-2" class="forecast-card card" style="width: 18rem;">
+    <div class="card-header">
+      Featured
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item icon">A fourth item</li>
+      <li class="list-group-item temp">An item</li>
+      <li class="list-group-item wind">A second item</li>
+      <li class="list-group-item humid">A third item</li>
+    </ul>
+  </div>
+  <div id="forecast-3" class="forecast-card card" style="width: 18rem;">
+    <div class="card-header">
+      Featured
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item icon">A fourth item</li>
+      <li class="list-group-item temp">An item</li>
+      <li class="list-group-item wind">A second item</li>
+      <li class="list-group-item humid">A third item</li>
+    </ul>
+  </div>
+  <div id="forecast-4" class="forecast-card card" style="width: 18rem;">
+    <div class="card-header">
+      Featured
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item icon">A fourth item</li>
+      <li class="list-group-item temp">An item</li>
+      <li class="list-group-item wind">A second item</li>
+      <li class="list-group-item humid">A third item</li>
+    </ul>
+  </div>
+  <div id="forecast-5" class="forecast-card card" style="width: 18rem;">
+    <div class="card-header">
+      Featured
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item icon">A fourth item</li>
+      <li class="list-group-item temp">An item</li>
+      <li class="list-group-item wind">A second item</li>
+      <li class="list-group-item humid">A third item</li>
+    </ul>
+  </div>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+<script src="./Assets/js/script.js"></script>
 </body>
 </html>
