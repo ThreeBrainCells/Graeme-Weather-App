@@ -16,15 +16,26 @@ var cityName = 'Denver';
 var cityNameArr=[];
 
 function getCityName(){
+  if (!$('#city-name').val()){
+    console.log('There was nothing in the array');
+    return
+  }
+    // console.log($('#city-name').val());
     cityName=$('#city-name').val();
+    console.log(cityName)
     cityNameArr.push(cityName);
     localStorage.setItem("cities", JSON.stringify(cityNameArr));
     createCityBtn(cityName)
 }
 
 function createCityBtn(cityName){
-  $('#city-buttons').append(`<button id="${cityName}">${cityName}</button>`);
-  $(`#${cityName}`).addClass('cityBtn btn btn-secondary btn-lg btn-block');
+  console.log(cityName)
+  var newBtnDiv = $('#city-buttons')
+  var newBtn = $('<button></button>')
+  newBtn.attr('id', cityName);
+  newBtn.text(cityName)
+  newBtn.addClass('cityBtn btn btn-secondary btn-lg btn-block');
+  newBtnDiv.append(newBtn)
   getLocationData(cityName);
 }
 //on page load, create city elements from local storage
@@ -35,13 +46,19 @@ function createStoredBtn(){
   }
   cityNameArr=JSON.parse(localStorage.getItem("cities"))
   for (let i = 0; i < cityNameArr.length; i++) {
-    $('#city-buttons').append(`<button id="${cityNameArr[i]}">${cityNameArr[i]}</button>`);
-    $(`#${cityNameArr[i]}`).addClass('cityBtn btn btn-secondary btn-lg btn-block')
+    // $('#city-buttons').append(`<button id="${cityNameArr[i]}">${cityNameArr[i]}</button>`);
+    // $(`#${cityNameArr[i]}`).addClass('cityBtn btn btn-secondary btn-lg btn-block')
+    var newBtnDiv = $('#city-buttons')
+    var newBtn = $('<button></button>')
+    newBtn.attr('id', cityNameArr[i]);
+    newBtn.text(cityNameArr[i])
+    newBtn.addClass('cityBtn btn btn-secondary btn-lg btn-block');
+    newBtnDiv.append(newBtn)
   }
 }
 
 //returns city's lat and long then sends it to getWeatherData
-var getLocationData = function () {
+var getLocationData = function (cityName) {
     var locationUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=1&appid=${APIKEY}`;
     fetch(locationUrl).then(function (response) {
         if (response.ok) {
@@ -72,30 +89,40 @@ var getWeatherData = function (latitude, longitude){
 //an icon representation of weather conditions, the temperature, the humidity, the wind speed, and the UV index
 
 function displayWeatherData(data){
-  var date = 
+  var date = moment().format('MMM/Do/YYYY').toString()
   $('#current-day').children('.card-header').html(`${cityName}(${date})`)
   $('#current-day').children('.icon').attr("src",`http://openweathermap.org/img/wn/${data.current.weather[0].icon}@2x.png`)
   $('#current-day').children('ul').children('.temp').html(`Temp: ${data.current.temp}`)
-  $('#current-day').children('ul').children('.wind').html(`Wind: ${data.current.wind_speed}`)
+  $('#current-day').children('ul').children('.wind').html(`Wind: ${data.current.wind_speed} mph`)
   $('#current-day').children('ul').children('.humid').html(`Humidity: ${data.current.humidity}`)
   $('#current-day').children('ul').children('.uv-index').html(`UV Index: ${data.current.uvi}`)
 
   //Now to do the same for the forecast cards
-  $('.forecast-card').children().each( (i, element)=>{
-    $(element).hasClass('.card-header').html('kookoo');
-    // console.log(data.daily[i])
-    // var forecastDay = moment(data.daily[i].dt).format('dddd');
-    // $('.forecast-card').children('.card-header').html(`${forecastDay}`)
-    // $('.forecast-card').children('ul').children('.icon').attr("src",`http://openweathermap.org/img/wn/${data.daily[i].weather[0].icon}@2x.png`)
-    // $('.forecast-card').children('ul').children('.temp').html(`Temp: ${data.daily[i].temp}`)
-    // $('.forecast-card').children('ul').children('.wind').html(`Wind: ${data.daily[i].wind_speed}`)
-    // $('.forecast-card').children('ul').children('.humid').html(`Humidity: ${data.daily[i].humidity}`)
+  $('.forecast-card').each(function(i){
+    var UTC = data.daily[i+1].dt*1000;
+    var forecastDay = moment.utc(UTC).format('dddd');
+    $('.forecast-card').children('.card-header').eq(i).html(`${forecastDay}`)
+    $('.forecast-card').children('ul').children('.icon').eq(i).attr("src",`http://openweathermap.org/img/wn/${data.daily[i].weather[0].icon}@2x.png`)
+    $('.forecast-card').children('ul').children('.temp').eq(i).html(`Temp: ${data.daily[i].temp.day}`)
+    $('.forecast-card').children('ul').children('.wind').eq(i).html(`Wind: ${data.daily[i].wind_speed} mph`)
+    $('.forecast-card').children('ul').children('.humid').eq(i).html(`Humidity: ${data.daily[i].humidity}`)
   })
 }
 
-// $('#searchBtn').on('click', getCityName());
+$('#search-button').on('click', function(){
+  console.log('this works')
+  getCityName()
+});
 //make every city element a clickable button that triggers getLocationData()
-$('.cityBtn').on('click', getLocationData(this.textContent))
+$('#city-buttons').on('click', $('.cityBtn'), function(event){
+  console.log('this button works')
+  if (event.target.classList.contains('cityBtn')){
+      cityName=event.target.textContent
+  getLocationData(cityName)
+  }
+
+})
 
 getLocationData()
 //(this is just for testing)
+createStoredBtn()
