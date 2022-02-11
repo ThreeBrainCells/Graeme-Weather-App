@@ -9,85 +9,108 @@
   </head>
 <body>
 
-<input type="text" id="city-name" placeholder="Enter city name here">
-<button id="search-button">Search</button>
-<div id="data-test"></div>
-<div id="city-buttons">
-  <button type="button" id="Denver"class="cityBtn btn btn-secondary btn-lg btn-block">Denver</button>
-</div>
-<!-- banner
-search bar
-search button
-space for generated cities(and local storage)
-current weather display
-5x forecast days -->
-<div id="current-weather">
-  <div class="card big-card" id="current-day" style="width: 18rem;">
-    <div class="card-header"></div>
-    <img class="icon" src="" alt="Weather Icon">
-    <ul class="list-group list-group-flush">
-      <li class="list-group-item temp">An item</li>
-      <li class="list-group-item wind">A second item</li>
-      <li class="list-group-item humid">A third item</li>
-      <li class="list-group-item uv-index">A fourth item</li>
-    </ul>
+<header>
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-4">Graeme's Weather App</h1>
+      <p class="lead">Search any city to find out its weather forecast</p>
+    </div>
   </div>
-</div>
+</header>
 
-<div id="5-day-forecast" class="card-deck">
-  <h1>5-day-forecast:</h1>
-  <div id="forecast-1" class="forecast-card card" style="width: 18rem;">
-    <div class="card-header">
+<div class="container">
+  <div class="row row-cols-2">
+  <div class="col-3">
+    <input type="text" id="city-name" placeholder="Enter city name here">
+    <button id="search-button">Search</button>
+    
+    <div id="city-buttons">
+      <button type="button" id="Denver"class="cityBtn btn btn-secondary btn-lg btn-block">Denver</button>
     </div>
-    <ul class="list-group list-group-flush">      
-      <img class="icon" src="" alt="Weather Icon">
-      <li class="list-group-item temp">An item</li>
-      <li class="list-group-item wind">A second item</li>
-      <li class="list-group-item humid">A third item</li>
-     </ul>
   </div>
-  <div id="forecast-2" class="forecast-card card" style="width: 18rem;">
-    <div class="card-header">
+  <!-- banner
+  search bar
+  search button
+  space for generated cities(and local storage)
+  current weather display
+  5x forecast days -->
+<div class="container col-9">
+  <div class="col">
+  <div class="row">
+    <div id="current-weather">
+      <div class="card big-card" id="current-day" style="width: 18rem;">
+        <div class="card-header"></div>
+        <img class="icon" src="" alt="Weather Icon">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item temp">Temp:</li>
+          <li class="list-group-item wind">Wind Speed:</li>
+          <li class="list-group-item humid">Humidity</li>
+          <li class="list-group-item uv-index">UV Index:</li>
+        </ul>
+      </div>
     </div>
-    <ul class="list-group list-group-flush">
-      <img class="icon" alt="Weather Icon">
-      <li class="list-group-item temp">An item</li>
-      <li class="list-group-item wind">A second item</li>
-      <li class="list-group-item humid">A third item</li>
-    </ul>
   </div>
-  <div id="forecast-3" class="forecast-card card" style="width: 18rem;">
-    <div class="card-header">
+
+    <div class="row">
+      <h1>5-day-forecast:</h1>
+      <div id="5-day-forecast" class="card-deck">
+      
+        <div id="forecast-1" class="forecast-card card" style="width: 18rem;">
+          <div class="card-header">
+          </div>
+          <ul class="list-group list-group-flush">      
+            <img class="icon" src="" alt="Weather Icon">
+            <li class="list-group-item temp">Temp:</li>
+            <li class="list-group-item wind">Wind Speed:</li>
+            <li class="list-group-item humid">Humidity:</li>
+          </ul>
+        </div>
+        <div id="forecast-2" class="forecast-card card" style="width: 18rem;">
+          <div class="card-header">
+          </div>
+          <ul class="list-group list-group-flush">
+            <img class="icon" alt="Weather Icon">
+            <li class="list-group-item temp">Temp:</li>
+            <li class="list-group-item wind">Wind Speed:</li>
+            <li class="list-group-item humid">Humidity:</li>
+          </ul>
+        </div>
+        <div id="forecast-3" class="forecast-card card" style="width: 18rem;">
+          <div class="card-header">
+          </div>
+          <ul class="list-group list-group-flush">
+            <img class="icon" alt="Weather Icon">
+            <li class="list-group-item temp">Temp:</li>
+            <li class="list-group-item wind">Wind Speed:</li>
+            <li class="list-group-item humid">Humidity:</li>
+          </ul>
+        </div>
+        <div id="forecast-4" class="forecast-card card" style="width: 18rem;">
+          <div class="card-header">
+          </div>
+          <ul class="list-group list-group-flush">
+            <img class="icon" alt="Weather Icon">
+            <li class="list-group-item temp">Temp:</li>
+            <li class="list-group-item wind">Wind Speed:</li>
+            <li class="list-group-item humid">Humidity:</li>
+          </ul>
+        </div>
+        <div id="forecast-5" class="forecast-card card" style="width: 18rem;">
+          <div class="card-header">
+          </div>
+          <ul class="list-group list-group-flush">
+            <img class="icon" alt="Weather Icon">
+            <li class="list-group-item temp">Temp:</li>
+            <li class="list-group-item wind">Wind Speed:</li>
+            <li class="list-group-item humid">Humidity:</li>
+          </ul>
+        </div>
+      </div>
     </div>
-    <ul class="list-group list-group-flush">
-      <img class="icon" alt="Weather Icon">
-      <li class="list-group-item temp">An item</li>
-      <li class="list-group-item wind">A second item</li>
-      <li class="list-group-item humid">A third item</li>
-    </ul>
   </div>
-  <div id="forecast-4" class="forecast-card card" style="width: 18rem;">
-    <div class="card-header">
-    </div>
-    <ul class="list-group list-group-flush">
-      <img class="icon" alt="Weather Icon">
-      <li class="list-group-item temp">An item</li>
-      <li class="list-group-item wind">A second item</li>
-      <li class="list-group-item humid">A third item</li>
-    </ul>
-  </div>
-  <div id="forecast-5" class="forecast-card card" style="width: 18rem;">
-    <div class="card-header">
-    </div>
-    <ul class="list-group list-group-flush">
-      <img class="icon" alt="Weather Icon">
-      <li class="list-group-item temp">An item</li>
-      <li class="list-group-item wind">A second item</li>
-      <li class="list-group-item humid">A third item</li>
-    </ul>
   </div>
 </div>
-
+</div>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
