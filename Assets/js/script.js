@@ -59,7 +59,7 @@ function createStoredBtn(){
 
 //returns city's lat and long then sends it to getWeatherData
 var getLocationData = function (cityName) {
-    var locationUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=1&appid=${APIKEY}`;
+    var locationUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=1&appid=${APIKEY}`;
     fetch(locationUrl).then(function (response) {
         if (response.ok) {
           response.json().then(function (data) {
