@@ -5,3 +5,5 @@ The purpose was to use city names (both from local storage and user searches) to
 This is the result:https://threebraincells.github.io/Graeme-Weather-App/
 
 What the website looks like: [./Assets.Graeme-Weather.png]
+
+Ask me about it @ teentrose@gmail.com
